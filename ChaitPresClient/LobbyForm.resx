@@ -555,7 +555,10 @@
         P/1f+Sg/5av89R69T++VwEWH6BFd7oToFL2i+2/mvf9/iO8+vYqyJQEAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="tmr_testVideo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>259, 17</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>25</value>
+    <value>73</value>
   </metadata>
 </root>

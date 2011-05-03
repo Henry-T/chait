@@ -17,13 +17,6 @@ namespace ChaitPresClient
             InitializeComponent();
         }
 
-        // 安全访问控件
-        private delegate void delUpdateChatContent(String str);
-        private void updateChatContent(String str)
-        {
-            tb_chatHistory.AppendText(str + "\n");
-        }
-
         private void btn_send_Click(object sender, EventArgs e)
         {
             ChaitAppClient.ChaitClient.Instance.Chat(this.Text, tb_send.Text);
@@ -32,14 +25,14 @@ namespace ChaitPresClient
 
         public void ShowChatMsg(String msg)
         {
-            Invoke(new delUpdateChatContent(updateChatContent), msg);
+            ExThreadUICtrl.AddTextRow(this, tb_chatHistory, msg);
         }
 
         private void btn_videoCmd_Click(object sender, EventArgs e)
         {
             if (btn_videoCmd.Text == "请求视频聊天")
             {
-                ChaitClient.Instance.VideoRequest(this.Text, this.OnFrameReceivedHandler);
+               ChaitClient.Instance.VideoRequest(this.Text, this.OnFrameReceivedHandler);
             }
             else if (btn_videoCmd.Text == "结束视频聊天")
             {
@@ -53,25 +46,33 @@ namespace ChaitPresClient
         {
             if (hasVideo)
             {
-                grb_video.Enabled = true;
-                btn_videoCmd.Text = "结束视频聊天";
+                ExThreadUICtrl.SetEnabled(this, grb_video, true); 
+                ExThreadUICtrl.SetText(this, btn_videoCmd, "结束视频聊天");
             }
             else
             {
-                grb_video.Enabled = false;
-                btn_videoCmd.Text = "请求视频聊天";
+                ExThreadUICtrl.SetEnabled(this, grb_video, false);
+                ExThreadUICtrl.SetText(this, btn_videoCmd, "请求视频聊天");
             }
         }
 
         // 显示接收到的视频
         public void OnFrameReceivedHandler(Bitmap frame)
         {
-            Invoke(new DelUpdateOtherFrame(delUpdateOtherFrame), frame);
+            ExThreadUICtrl.SetPictureBoxImage(this, ptb_otherVideo, frame);
+            // Invoke(new DelUpdateOtherFrame(delUpdateOtherFrame), frame);
         }
-        public delegate void DelUpdateOtherFrame(Bitmap frame);
-        public void delUpdateOtherFrame(Bitmap frame)
-        {
-            ptb_otherVideo.Image = frame;
-        }
+        //public delegate void DelUpdateOtherFrame(Bitmap frame);
+        //public void delUpdateOtherFrame(Bitmap frame)
+        //{
+        //    try
+        //    {
+        //        .Image = frame;
+        //    }
+        //    catch
+        //    {
+        //        // 对象已被使用... 异常
+        //    }
+        //}
     }
 }

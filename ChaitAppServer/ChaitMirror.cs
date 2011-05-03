@@ -50,7 +50,24 @@ namespace ChaitAppServer
         {
             lock (client.GetStream())   // 使用SyncLock阻止多线程同时访问NetworkStream TODO 为什么会出现同时访问的情况
             {
-                bytesRead = client.GetStream().EndRead(ar);
+                try
+                {
+                    bytesRead = client.GetStream().EndRead(ar);
+                }
+                catch (Exception ex)
+                {
+                    // 客户端强行断开连接处理
+                    if (OnServerLog != null)
+                        OnServerLog("\n<< 客户端强行退出异常处理 >>");
+                    client.Close();
+                    ChaitServer.Instance.RemoveClient(ClientNeck);
+                    if (OnServerLog != null)
+                        OnServerLog("[管理]已移除客户端：" + ClientNeck);
+                    if (OnServerLog != null)
+                        OnServerLog("\n");
+
+                    return;
+                }
             }
 
             if (bytesRead < 1)
@@ -202,6 +219,7 @@ namespace ChaitAppServer
         {
             if (OnServerLog != null)
                 OnServerLog("\n<< Quit数据处理 >>");
+            client.Close();
             ChaitServer.Instance.RemoveClient(ClientNeck);
             if (OnServerLog != null)
                 OnServerLog("[管理]已移除客户端：" + ClientNeck);

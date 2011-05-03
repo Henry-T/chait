@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Net;
 using System.IO;
 using ChaitAppProtocol;
+using ServerApp;
 
 namespace ChaitAppClient
 {
@@ -124,7 +125,8 @@ namespace ChaitAppClient
                     IPAddress receiverIP;
                     int ipLength;
                     String otherIP;
-                    int otherPort;
+                    int otherSendPort;
+                    int otherRecvPort;
                     int roleX;
                     int roleY;
 
@@ -257,18 +259,22 @@ namespace ChaitAppClient
                             neckname = System.Text.Encoding.UTF8.GetString(data, 2, neckLength);
                             ipLength = System.Text.Encoding.UTF8.GetChars(data, 2 + neckLength, 1)[0];
                             otherIP = System.Text.Encoding.UTF8.GetString(data, 3 + neckLength, ipLength);
-                            otherPort = System.Text.Encoding.UTF8.GetChars(data, 3 + neckLength + ipLength, 4)[0];
+                            otherSendPort = System.Text.Encoding.UTF8.GetChars(data, 3 + neckLength + ipLength, 4)[0];
+                            int spLen = System.Text.Encoding.UTF8.GetByteCount(((char)otherSendPort).ToString());
+                            otherRecvPort = System.Text.Encoding.UTF8.GetChars(data, 3 + neckLength + ipLength + spLen, 4)[0];
                             if (OnVideoRequestEvent != null)
-                                OnVideoRequestEvent(neckname, otherIP, otherPort);
+                                OnVideoRequestEvent(neckname, otherIP, otherSendPort, otherRecvPort);
                             break;
                         case CProtocol.VideoAccept:
                             neckLength = System.Text.Encoding.UTF8.GetChars(data, 1, 1)[0];
                             neckname = System.Text.Encoding.UTF8.GetString(data, 2, neckLength);
                             ipLength = System.Text.Encoding.UTF8.GetChars(data, 2 + neckLength, 1)[0];
                             otherIP = System.Text.Encoding.UTF8.GetString(data, 3 + neckLength, ipLength);
-                            otherPort = System.Text.Encoding.UTF8.GetChars(data, 3 + neckLength + ipLength, 4)[0];
+                            otherSendPort = System.Text.Encoding.UTF8.GetChars(data, 3 + neckLength + ipLength, 4)[0];
+                            int spLen2 = System.Text.Encoding.UTF8.GetByteCount(((char)otherSendPort).ToString());
+                            otherRecvPort = System.Text.Encoding.UTF8.GetChars(data, 3 + neckLength + ipLength + spLen2, 4)[0];
                             if (OnVideoAcceptEvent != null)
-                                OnVideoAcceptEvent(neckname, otherIP, otherPort);
+                                OnVideoAcceptEvent(neckname, otherIP, otherSendPort, otherRecvPort);
                             break;
                         case CProtocol.VideoRefused:
                             neckname = System.Text.Encoding.UTF8.GetString(data, 1, bytesRead - 1);
@@ -379,5 +385,10 @@ namespace ChaitAppClient
             sendData(dataStr);
         }
         #endregion
+
+        public void ChangePortBase(int pb)
+        {
+            NetResource.Instance.SetBaseNumber(pb);
+        }
     }
 }

@@ -60,8 +60,8 @@ namespace ChaitAppProtocol
         public const int FileStop = 66;        // 文件传递停止    服务器     FileStop     NeckLength NeckName SaveFileName
 
         // 视频聊天
-        public const int VideoRequest = 71;     // 视频请求       服务器     VideoRequest TargetLength TargeNeck   SourcePort
-        public const int VideoAccept = 72;      // 接收视频       服务器     VideoAccept  SourceLength SourceNeck  TargetPort 
+        public const int VideoRequest = 71;     // 视频请求       服务器     VideoRequest TargetLength TargeNeck   SourceSendPort SourceRecvPort
+        public const int VideoAccept = 72;      // 接收视频       服务器     VideoAccept  SourceLength SourceNeck  TargetSendPort TargetRecvPort
         public const int VideoRefused = 73;     // 拒绝视频       服务器     VideoRefuse  SourceNeck   
         public const int VideoStop = 74;        // 停止视频       服务器     VideoStop    OtherNeck
 
@@ -114,8 +114,8 @@ namespace ChaitAppProtocol
         //public const int FileStop = 66;        // 文件传递停止    单一       FileStop   NeckLength NeckName SaveFileName
 
         // 视频聊天
-        //public const int VideoRequest = 71;     // 视频请求       服务器     VideoRequest SourceLength SourceNeck SrcIPLen SourceIP SourcePort
-        //public const int VideoAccept = 72;      // 接收视频       服务器     VideoAccept  TargetLength TargetNeck TgtIPLen TargetIP TargetPort
+        //public const int VideoRequest = 71;     // 视频请求       服务器     VideoRequest SourceLength SourceNeck SrcIPLen SourceIP SourceSendPort SourceRecvPort
+        //public const int VideoAccept = 72;      // 接收视频       服务器     VideoAccept  TargetLength TargetNeck TgtIPLen TargetIP TargetSendPort TargetRecvPort
         //public const int VideoRefused = 73;     // 拒绝视频       服务器     VideoRefuse  TargetNeck
         //public const int VideoStop = 74;        // 停止视频       服务器     VideoStop    OtherNeck
 

@@ -21,7 +21,9 @@ namespace ChaitAppServer
                 OnServerLog("\n<< VideoRequest数据处理 >>");
             int neckLen = (int)(Encoding.UTF8.GetChars(data, 1, 1)[0]);
             String neckname = Encoding.UTF8.GetString(data, 2, neckLen);
-            int port = (int)(Encoding.UTF8.GetChars(data, 2 + neckLen, 4)[0]);
+            int sendPort = (int)(Encoding.UTF8.GetChars(data, 2 + neckLen, 4)[0]);
+            int spLen = Encoding.UTF8.GetByteCount(((char)sendPort).ToString());
+            int recvPort = (int)(Encoding.UTF8.GetChars(data, 2 + neckLen + spLen, 4)[0]);
 
             ChaitMirror targetClient = ChaitServer.Instance.Clients[neckname];
             String ip = ClientIP.Split(new char[]{':'})[0];
@@ -31,7 +33,8 @@ namespace ChaitAppServer
                 ClientNeck +
                 ((char)Encoding.UTF8.GetBytes(ip).Length).ToString() +
                 ip +
-                port;
+                ((char)sendPort).ToString() + 
+                ((char)recvPort).ToString();
             targetClient.transSendMsg(msgStr);
             if (OnServerLog != null)
                 OnServerLog(String.Format("{0}向{1}请求视频聊天", ClientNeck, neckname));
@@ -45,7 +48,9 @@ namespace ChaitAppServer
                 OnServerLog("\n<< VideoAccept数据处理 >>");
             int neckLen = (int)(Encoding.UTF8.GetChars(data, 1, 1)[0]);
             String neckname = Encoding.UTF8.GetString(data, 2, neckLen);
-            int port = (int)(Encoding.UTF8.GetChars(data, 2 + neckLen, 4)[0]);
+            int sendPort = (int)(Encoding.UTF8.GetChars(data, 2 + neckLen, 4)[0]);
+            int spLen = Encoding.UTF8.GetByteCount(((char)sendPort).ToString());
+            int recvPort = (int)(Encoding.UTF8.GetChars(data, 2 + neckLen + spLen, 4)[0]);
 
             ChaitMirror targetClient = ChaitServer.Instance.Clients[neckname];
             String ip = ClientIP.Split(new char[] { ':' })[0];
@@ -55,7 +60,8 @@ namespace ChaitAppServer
                 ClientNeck +
                 ((char)Encoding.UTF8.GetBytes(ip).Length).ToString() +
                 ip +
-                port;
+                ((char)sendPort).ToString() +
+                ((char)recvPort).ToString();
             targetClient.transSendMsg(msgStr);
             if (OnServerLog != null)
                 OnServerLog(String.Format("{0}接受了{1}的视频聊天请求", ClientNeck, neckname));
