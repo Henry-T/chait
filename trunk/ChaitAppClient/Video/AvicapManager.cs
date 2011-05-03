@@ -38,106 +38,52 @@ namespace ChaitAppClient.Video
         private IntPtr mControlPtr;
         private int mWidth;
         private int mHeight;
-        #endregion
 
-        #region Struct
-        [StructLayout(LayoutKind.Sequential)]
-        public struct BITMAPINFOHEADER
-        {
-            [MarshalAs(UnmanagedType.I4)]
-            public Int32 biSize;
-            [MarshalAs(UnmanagedType.I4)]
-            public Int32 biWidth;
-            [MarshalAs(UnmanagedType.I4)]
-            public Int32 biHeight;
-            [MarshalAs(UnmanagedType.I2)]
-            public short biPlanes;
-            [MarshalAs(UnmanagedType.I2)]
-            public short biBitCount;
-            [MarshalAs(UnmanagedType.I4)]
-            public Int32 biCompression;
-            [MarshalAs(UnmanagedType.I4)]
-            public Int32 biSizeImage;
-            [MarshalAs(UnmanagedType.I4)]
-            public Int32 biXPelsPerMeter;
-            [MarshalAs(UnmanagedType.I4)]
-            public Int32 biYPelsPerMeter;
-            [MarshalAs(UnmanagedType.I4)]
-            public Int32 biClrUsed;
-            [MarshalAs(UnmanagedType.I4)]
-            public Int32 biClrImportant;
-        }
-
-        [StructLayout(LayoutKind.Sequential)]
-        public struct BITMAPINFO
-        {
-            [MarshalAs(UnmanagedType.Struct, SizeConst = 40)]
-            public BITMAPINFOHEADER bmiHeader;
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1024)]
-            public Int32[] bmiColors;
-        }
+        private Bitmap lastBitmap;      // 单机测试修正，如果无法获取剪贴板数据，则使用前面一副图像代替
         #endregion
 
         public AvicapManager(IntPtr handle, int width, int height)
+        //public void InitialAviCap(IntPtr handle, int width, int height)
         {
             mControlPtr = handle;
             mWidth = width;
             mHeight = height;
+
+            byte[] lpszName = new byte[100];
+            hWndC = capCreateCaptureWindowA(lpszName, WS_CHILD | WS_VISIBLE, 0, 0, mWidth, mHeight, mControlPtr, 0);
+            if (hWndC.ToInt32() != 0)
+            {
+             bool a = SendMessage(hWndC, WM_CAP_DRIVER_CONNECT, 0, 0);
+             bool b = SendMessage(hWndC, WM_CAP_SET_SCALE, 1, 0);
+             bool c = SendMessage(hWndC, WM_CAP_SET_PREVIEWRATE, 66, 0);
+             bool d = SendMessage(hWndC, WM_CAP_SET_PREVIEW, 1, 0);
+            }
         }
         [DllImport("avicap32.dll")]
         private static extern IntPtr capCreateCaptureWindowA(byte[] lpszWindowName, int dwStyle, int x, int y, int nWidth, int nHeight, IntPtr hWndParent, int nID);
 
-        [DllImport("avicap32.dll")]
-        private static extern int capGetVideoFormat(IntPtr hWnd, IntPtr psVideoForm, int wSize);
-
         [DllImport("User32.dll")]
         private static extern bool SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
 
-        [DllImport("User32.dll")]
-        private static extern bool SendMessage(IntPtr hWnd, int wMsg, int wParam, ref BITMAPINFO lParam);
-
-        public void GrabImage(string path)
-        {
-            IntPtr hBmp = Marshal.StringToHGlobalAnsi(path);
-            SendMessage(hWndC, WM_CAP_SAVEDIB, 0, hBmp.ToInt32());
-        }
 
         public Bitmap GrabImage()
         {
             IDataObject data;
             SendMessage(hWndC, WM_CAP_EDIT_COPY, 0, 0);
-            data = Clipboard.GetDataObject();
-            if (data.GetDataPresent(typeof(Bitmap)))
+            try
             {
-                return (Bitmap)data.GetData(typeof(Bitmap));
+                data = Clipboard.GetDataObject();
+                if (data == null)
+                    return null;
+                if (data.GetDataPresent(typeof(System.Drawing.Bitmap)))
+                {
+                    return (Bitmap)data.GetData(typeof(Bitmap));
+                }
+                return lastBitmap;
             }
-            return null;
-        }
-
-        public void Test()
-        {
-            IntPtr hBmp = Marshal.StringToHGlobalAnsi("13.bmp");
-            SendMessage(hWndC, WM_CAP_SAVEDIB, 0, hBmp.ToInt32());
-        }
-        public void Start()
-        {
-            if (bWorkStart)
-                return;
-            bWorkStart = true;
-            byte[] lpszName = new byte[100];
-            hWndC = capCreateCaptureWindowA(lpszName, WS_CHILD | WS_VISIBLE, 0, 0, mWidth, mHeight, mControlPtr, 0);
-            if (hWndC.ToInt32() != 0)
+            catch (System.Exception ex)
             {
-                SendMessage(hWndC, WM_CAP_SET_CALLBACK_VIDEOSTREAM,0,0);
-                SendMessage(hWndC, WM_CAP_SET_CALLBACK_ERROR,0,0);
-                SendMessage(hWndC, WM_CAP_SET_CALLBACK_STATUSA,0,0);
-                SendMessage(hWndC, WM_CAP_DRIVER_CONNECT, 0, 0);
-                SendMessage(hWndC, WM_CAP_SET_SCALE,1,0);
-                SendMessage(hWndC, WM_CAP_SET_PREVIEWRATE, 66, 0);
-                SendMessage(hWndC, WM_CAP_SET_OVERLAY, 1, 0);
-                SendMessage(hWndC, WM_CAP_SET_PREVIEW, 1, 0);
-                BITMAPINFO bmpInfo = new BITMAPINFO();
-                SendMessage(hWndC, WM_CAP_SET_VIDEOFORMAT, Marshal.SizeOf(bmpInfo), ref bmpInfo);
+                return lastBitmap;
             }
         }
 
@@ -147,16 +93,17 @@ namespace ChaitAppClient.Video
             bWorkStart = false;
         }
 
-        public void Kinescope(string path)
+        public void GrabImage(string path)
         {
             IntPtr hBmp = Marshal.StringToHGlobalAnsi(path);
-            SendMessage(hWndC, WM_CAP_FILE_SET_CAPTURE_FILEA, 0, hBmp.ToInt32());
-            SendMessage(hWndC, WM_CAP_SEQUENCE, 0, 0);
+            SendMessage(hWndC, WM_CAP_SAVEDIB, 0, hBmp.ToInt32());
         }
 
-        public void StopKinescope(string path)
-        {
-            SendMessage(hWndC, WM_CAP_STOP, 0, 0);
-        }
+        //public void Test()
+        //{
+        //    IntPtr hBmp = Marshal.StringToHGlobalAnsi("13.bmp");
+        //    SendMessage(hWndC, WM_CAP_SAVEDIB, 0, hBmp.ToInt32());
+        //}
+
     }
 }

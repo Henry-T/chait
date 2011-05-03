@@ -46,7 +46,8 @@ namespace XNANetRun
             IsMouseVisible = true;
 
             Random r = new Random(DateTime.Now.Millisecond);
-            ChaitClient.Instance.Join(IPAddress.Parse("111.0.240.192"), 1048, r.Next(9999).ToString(), IPAddress.Parse("111.0.240.61"));
+            String ip = Dns.GetHostAddresses(Environment.MachineName)[0].ToString();
+            ChaitClient.Instance.Join(IPAddress.Parse(ip), 1048, r.Next(9999).ToString(), IPAddress.Parse("111.0.240.61"));
             ChaitClient.Instance.OnJoinEvent += RoleManager.Instance.OnJoinHandler;
             ChaitClient.Instance.OnNeckListEvent += RoleManager.Instance.onNeckListHandler;
             ChaitClient.Instance.OnRolePosEvent += RoleManager.Instance.OnRolePosHandler;

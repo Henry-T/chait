@@ -47,11 +47,12 @@
     <Compile Include="File\FileReciever.cs" />
     <Compile Include="File\FileSender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Video\AvicapManager.cs" />
+    <None Include="Video\AvicapManager.cs.old" />
     <Compile Include="Video\Bitmap.cs" />
     <Compile Include="Video\VideoManager.cs" />
     <Compile Include="Video\VideoMirror.cs" />
     <Compile Include="ChaitClient_Group.cs" />
+    <Compile Include="Video\AvicapManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ChaitAppProtocol\ChaitAppProtocol.csproj">

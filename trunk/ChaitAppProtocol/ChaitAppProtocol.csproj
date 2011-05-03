@@ -8,7 +8,7 @@
     <ProjectGuid>{AC72111E-D7D4-4DFD-8455-FA3182891607}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ServerApp</RootNamespace>
+    <RootNamespace>ChaitAppProtocol</RootNamespace>
     <AssemblyName>ChaitProtocol</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CProtocol.cs" />
+    <Compile Include="NetResource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CTcpClient.cs" />
   </ItemGroup>

@@ -100,6 +100,7 @@
             this.ptb_otherVideo.Location = new System.Drawing.Point(9, 29);
             this.ptb_otherVideo.Name = "ptb_otherVideo";
             this.ptb_otherVideo.Size = new System.Drawing.Size(166, 143);
+            this.ptb_otherVideo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptb_otherVideo.TabIndex = 4;
             this.ptb_otherVideo.TabStop = false;
             // 
@@ -108,6 +109,7 @@
             this.ptb_selfVideo.Location = new System.Drawing.Point(9, 195);
             this.ptb_selfVideo.Name = "ptb_selfVideo";
             this.ptb_selfVideo.Size = new System.Drawing.Size(166, 143);
+            this.ptb_selfVideo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptb_selfVideo.TabIndex = 4;
             this.ptb_selfVideo.TabStop = false;
             // 
@@ -166,8 +168,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox ptb_otherVideo;
-        private System.Windows.Forms.PictureBox ptb_selfVideo;
         private System.Windows.Forms.Button btn_videoCmd;
         private System.Windows.Forms.GroupBox grb_video;
+        public System.Windows.Forms.PictureBox ptb_selfVideo;
     }
 }

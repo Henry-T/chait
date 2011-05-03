@@ -19,11 +19,11 @@ namespace ChaitPresClient
         }
 
         // 安全访问控件
-        private delegate void delUpdateChatContent(String str);
-        private void updateChatContent(String str)
-        {
-            tb_groupHistory.AppendText(str + "\n");
-        }
+        //private delegate void delUpdateChatContent(String str);
+        //private void updateChatContent(String str)
+        //{
+        //    tb_groupHistory.AppendText(str + "\n");
+        //}
 
         private void btn_send_Click(object sender, EventArgs e)
         {
@@ -37,19 +37,13 @@ namespace ChaitPresClient
 
         public void ShowChatMsg(String msg)
         {
-            Invoke(new delUpdateChatContent(updateChatContent), msg);
+            // Invoke(new delUpdateChatContent(updateChatContent), msg);
+            ExThreadUICtrl.AddTextRow(this, tb_groupHistory, msg);
         }
 
         public void SwitchMember(String neckname)
         {
-            if (lsb_members.Items.Contains(neckname))
-            {
-                lsb_members.Items.Remove(neckname);
-            }
-            else
-            {
-                lsb_members.Items.Add(neckname);
-            }
+            ExThreadUICtrl.SwitchListItem(this, lsb_members, neckname);
         }
     }
 }

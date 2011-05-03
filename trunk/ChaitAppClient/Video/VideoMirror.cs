@@ -5,75 +5,128 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.Drawing;
+using System.IO;
+using System.Threading;
 
 namespace ChaitAppClient.Video
 {
     public class VideoMirror
     {
         // Variables
-        public String OtherNeck;
-        public IPEndPoint OtherEP;
-        private UdpClient otherClient;
+        public String OtherNeck { get; private set; }
 
-        public int ThisPort;
-        private UdpClient thisClient;
+        public IPEndPoint otherSendEP;
+        public IPEndPoint otherRecvEP;
+
+        public IPEndPoint thisSendEP;
+        public IPEndPoint thisRecvEP;
+
+        private UdpClient thisSendClient;
+        private UdpClient thisRecvClient;
 
         public bool IsReady{get; private set;}
+
+        private Thread recvThread;
 
         // 图像接收消息
         public delegate void OnFrameReceivedHandler(Bitmap frame);
         public event OnFrameReceivedHandler OnFrameReceivedEvent;
 
-        public VideoMirror()
+        public VideoMirror(String otherNeck)
         {
             IsReady = false;
+
+            this.OtherNeck = otherNeck;
         }
+
+        //public VideoMirror(String otherNeck, String otherIP, int otherPort, int thisPort, OnFrameReceivedHandler onFRH)
+        //{
+        //    IsReady = false;
+
+        //    this.OtherNeck = OtherNeck;
+        //    this.otherRecvEP = new IPEndPoint(IPAddress.Parse(otherIP), otherPort);
+        //    this.thisSendEP = new IPEndPoint(ChaitClient.Instance.LocalIP, thisPort);
+        //    this.OnFrameReceivedEvent += onFRH;
+
+        //    thisSendClient = new UdpClient(thisSendEP);
+        //    thisRecvClient = new UdpClient(thisRecvEP);
+        //}
 
         // 开始
         public void Begin()
         {
-            IsReady = true;
-            thisClient = new UdpClient(ThisPort );
-            otherClient = new UdpClient(OtherEP);
-            thisClient.BeginReceive(onReceive, null);
+            // 创建UDPClient
+            thisSendClient = new UdpClient(thisSendEP);
+            thisRecvClient = new UdpClient(thisRecvEP);
+
+            // 激活发送模式
+            IsReady = true;         
+            // thisSendClient.BeginReceive(onReceive, null);
+            // 启动接收
+            recvThread = new Thread(recvProc);
+            recvThread.Start();
         }
+
         // 请求被拒绝时的清理
         public void Clear()
         {
             // 这里没有清理的必要，因为该对象将在VideoManager中被删除
             IsReady = false;
-            if (thisClient != null)
+            if (thisSendClient != null)
             {
-                thisClient.Close();
-                thisClient = null;
+                thisSendClient.Close();
+                thisSendClient = null;
             }
-            if (otherClient != null)
+            if (thisRecvClient != null)
             {
-                otherClient.Close();
-                otherClient.Close();
+                thisRecvClient.Close();
+                thisRecvClient.Close();
             }
+        }
+        private void recvProc()
+        {
+            while (true)
+            {
+                byte[] recvBuffer = thisRecvClient.Receive(ref otherSendEP);
+                Stream s = new MemoryStream(recvBuffer);
+                Bitmap frame = new Bitmap(s);
+                if (OnFrameReceivedEvent != null)
+                    OnFrameReceivedEvent(frame);
+            }
+        }
+        class UdpState
+        {
+            public UdpClient u;
+            public IPEndPoint e;
         }
         private void onReceive(IAsyncResult ar)
         {
-            // 获取单帧图片 ...
-            Bitmap frame = new Bitmap(100,100);
-            // ...
-            if (OnFrameReceivedEvent != null)
-                OnFrameReceivedEvent(frame);
+            UdpClient u = (UdpClient)((UdpState)(ar.AsyncState)).u;
+            IPEndPoint e = (IPEndPoint)((UdpState)(ar.AsyncState)).e;
+            byte[] receiveBytes = u.EndReceive(ar, ref e);
+            if (e == otherSendEP)    // 过滤出有效的视频数据
+            {
+                Stream s = new MemoryStream(receiveBytes);
+                // 获取单帧图片
+                Bitmap frame = new Bitmap(s);
+                if (OnFrameReceivedEvent != null)
+                    OnFrameReceivedEvent(frame);
+            }
+
+            thisSendClient.BeginReceive(onReceive, null);
         }
 
         // SendFrame
         public void SendData(byte[] data)
         {
-            if(otherClient != null)
-                otherClient.BeginSend(data, data.Length, OtherEP, null, null);
+            if(thisSendClient != null)
+                thisSendClient.Send(data, data.Length, otherRecvEP);
         }
-
 
         // 停止发送
         public void Stop()
         {
-            otherClient.Close();
+            thisSendClient.Close();
         }
     }
 }

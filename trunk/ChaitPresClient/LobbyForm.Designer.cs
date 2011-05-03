@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LobbyForm));
             this.label1 = new System.Windows.Forms.Label();
             this.tb_neckName = new System.Windows.Forms.TextBox();
@@ -46,8 +47,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbb_serverIP = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbb_localIP = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.tb_localIP = new System.Windows.Forms.TextBox();
             this.btn_sendPause = new System.Windows.Forms.Button();
             this.btn_sendStop = new System.Windows.Forms.Button();
             this.sts_fileSend = new System.Windows.Forms.StatusStrip();
@@ -64,12 +65,18 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ptb_capHolder = new System.Windows.Forms.PictureBox();
+            this.ptb_myFace = new System.Windows.Forms.PictureBox();
+            this.tmr_testVideo = new System.Windows.Forms.Timer(this.components);
+            this.label11 = new System.Windows.Forms.Label();
+            this.tb_portBase = new System.Windows.Forms.TextBox();
+            this.btn_changePortBase = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_capHolder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_myFace)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -168,7 +175,7 @@
             // 
             this.sts_fileReceive.Location = new System.Drawing.Point(0, 473);
             this.sts_fileReceive.Name = "sts_fileReceive";
-            this.sts_fileReceive.Size = new System.Drawing.Size(604, 22);
+            this.sts_fileReceive.Size = new System.Drawing.Size(705, 22);
             this.sts_fileReceive.TabIndex = 5;
             this.sts_fileReceive.Text = "sts_receive";
             // 
@@ -223,8 +230,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cbb_localIP);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.tb_localIP);
             this.groupBox2.Enabled = false;
             this.groupBox2.Location = new System.Drawing.Point(274, 10);
             this.groupBox2.Name = "groupBox2";
@@ -232,6 +239,14 @@
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "文件传递";
+            // 
+            // cbb_localIP
+            // 
+            this.cbb_localIP.FormattingEnabled = true;
+            this.cbb_localIP.Location = new System.Drawing.Point(50, 13);
+            this.cbb_localIP.Name = "cbb_localIP";
+            this.cbb_localIP.Size = new System.Drawing.Size(108, 20);
+            this.cbb_localIP.TabIndex = 3;
             // 
             // label7
             // 
@@ -241,14 +256,6 @@
             this.label7.Size = new System.Drawing.Size(41, 12);
             this.label7.TabIndex = 0;
             this.label7.Text = "本地IP";
-            // 
-            // tb_localIP
-            // 
-            this.tb_localIP.Location = new System.Drawing.Point(54, 13);
-            this.tb_localIP.Name = "tb_localIP";
-            this.tb_localIP.Size = new System.Drawing.Size(108, 21);
-            this.tb_localIP.TabIndex = 1;
-            this.tb_localIP.Text = "192.168.1.116";
             // 
             // btn_sendPause
             // 
@@ -276,7 +283,7 @@
             // 
             this.sts_fileSend.Location = new System.Drawing.Point(0, 451);
             this.sts_fileSend.Name = "sts_fileSend";
-            this.sts_fileSend.Size = new System.Drawing.Size(604, 22);
+            this.sts_fileSend.Size = new System.Drawing.Size(705, 22);
             this.sts_fileSend.TabIndex = 7;
             this.sts_fileSend.Text = "sts_send";
             // 
@@ -405,27 +412,73 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(496, 1);
+            this.pictureBox1.Location = new System.Drawing.Point(442, 5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(90, 82);
+            this.pictureBox1.Size = new System.Drawing.Size(46, 44);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             // 
             // ptb_capHolder
             // 
-            this.ptb_capHolder.Location = new System.Drawing.Point(431, 1);
+            this.ptb_capHolder.Location = new System.Drawing.Point(442, 53);
             this.ptb_capHolder.Name = "ptb_capHolder";
-            this.ptb_capHolder.Size = new System.Drawing.Size(59, 36);
+            this.ptb_capHolder.Size = new System.Drawing.Size(46, 32);
             this.ptb_capHolder.TabIndex = 12;
             this.ptb_capHolder.TabStop = false;
+            // 
+            // ptb_myFace
+            // 
+            this.ptb_myFace.Location = new System.Drawing.Point(495, 6);
+            this.ptb_myFace.Name = "ptb_myFace";
+            this.ptb_myFace.Size = new System.Drawing.Size(91, 79);
+            this.ptb_myFace.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptb_myFace.TabIndex = 13;
+            this.ptb_myFace.TabStop = false;
+            // 
+            // tmr_testVideo
+            // 
+            this.tmr_testVideo.Enabled = true;
+            this.tmr_testVideo.Interval = 50;
+            this.tmr_testVideo.Tick += new System.EventHandler(this.tmr_testVideo_Tick);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(605, 10);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(77, 12);
+            this.label11.TabIndex = 14;
+            this.label11.Text = "视频端口基数";
+            // 
+            // tb_portBase
+            // 
+            this.tb_portBase.Location = new System.Drawing.Point(595, 27);
+            this.tb_portBase.Name = "tb_portBase";
+            this.tb_portBase.Size = new System.Drawing.Size(100, 21);
+            this.tb_portBase.TabIndex = 15;
+            this.tb_portBase.Text = "4000";
+            // 
+            // btn_changePortBase
+            // 
+            this.btn_changePortBase.Location = new System.Drawing.Point(607, 52);
+            this.btn_changePortBase.Name = "btn_changePortBase";
+            this.btn_changePortBase.Size = new System.Drawing.Size(75, 23);
+            this.btn_changePortBase.TabIndex = 16;
+            this.btn_changePortBase.Text = "修改";
+            this.btn_changePortBase.UseVisualStyleBackColor = true;
+            this.btn_changePortBase.Click += new System.EventHandler(this.btn_changePortBase_Click);
             // 
             // LobbyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(604, 495);
+            this.ClientSize = new System.Drawing.Size(705, 495);
+            this.Controls.Add(this.btn_changePortBase);
+            this.Controls.Add(this.tb_portBase);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.ptb_myFace);
             this.Controls.Add(this.ptb_capHolder);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox4);
@@ -437,6 +490,7 @@
             this.Controls.Add(this.btn_connect);
             this.Name = "LobbyForm";
             this.Text = "聊天大厅";
+            this.Load += new System.EventHandler(this.LobbyForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -447,6 +501,7 @@
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_capHolder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_myFace)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -471,7 +526,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox tb_localIP;
         private System.Windows.Forms.Button btn_sendPause;
         private System.Windows.Forms.Button btn_sendStop;
         private System.Windows.Forms.StatusStrip sts_fileSend;
@@ -489,6 +543,12 @@
         private System.Windows.Forms.Button btn_joinGroup;
         private System.Windows.Forms.ComboBox cbb_serverIP;
         private System.Windows.Forms.PictureBox ptb_capHolder;
+        private System.Windows.Forms.PictureBox ptb_myFace;
+        private System.Windows.Forms.Timer tmr_testVideo;
+        private System.Windows.Forms.ComboBox cbb_localIP;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox tb_portBase;
+        private System.Windows.Forms.Button btn_changePortBase;
     }
 }
 
