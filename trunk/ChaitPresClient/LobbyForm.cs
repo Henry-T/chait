@@ -38,7 +38,6 @@ namespace ChaitPresClient
                 cbb_serverIP.SelectedIndex = 0;
                 cbb_localIP.SelectedIndex = 0;
             }
-
         }
 
         
@@ -108,9 +107,9 @@ namespace ChaitPresClient
                     return;
                 }
                 // 获取在线好友列表
-                // ChaitClient.Instance.NeckList(); // TODO 问题：无法同时获取两个列表，后一条请求信息丢失
+                ChaitClient.Instance.NeckList(); // TODO 问题：无法同时获取两个列表，后一条请求信息丢失
                 // 获取群组列表
-                // ChaitClient.Instance.GroupList();
+                ChaitClient.Instance.GroupList();
 
                 btn.Text = "断开";
                 btn_sendFile.Enabled = true;
@@ -209,13 +208,6 @@ namespace ChaitPresClient
             }
         }
 
-        // 安全访问控件委托
-        //private delegate void delUpdateLobbyChatContent(String str);
-        //private void updateLobbyChatContent(String str)
-        //{
-        //    tb_chatHistory.AppendText(str + "\n");
-        //}
-
         private delegate PrivateForm delCreatePrivateForm(String neckname);
         private PrivateForm createPrivateForm(String neckname)
         {
@@ -226,27 +218,9 @@ namespace ChaitPresClient
             return pf;
         }
 
-        //private delegate void delUpdatePrivateForm(String neckname, String chatString);
-        //private void updatePrivateForm(String neckname, String chatString)
-        //{
-        //    privateChatForms[neckname].ShowChatMsg(neckname + "：" + chatString + "\n");
-        //}
-
         private delegate void delCreateGroupForm(String groupName);
         private void createGroupForm(String groupName)
         {
-        }
-
-        //private delegate void delUpdateGroupForm(String groupName, String chatStr);
-        //private void updateGroupForm(String groupName, String chatStr)
-        //{
-        //    groupChatForms[groupName].ShowChatMsg(chatStr);
-        //}
-
-        private delegate void delSwitchMemberListItem(String groupName, String neckname);
-        private void switchMemberListItem(String groupName, String neckname)
-        {
-            groupChatForms[groupName].SwitchMember(neckname);
         }
 
         private delegate void delShowError(String errorStr);
@@ -311,7 +285,6 @@ namespace ChaitPresClient
             {
                 str = "[系统]"+neckname + "因违反规则被踢出聊天室";
             }
-            //Invoke(new delUpdateLobbyChatContent(updateLobbyChatContent), str);
             ExThreadUICtrl.AddTextRow(this, tb_chatHistory, str);
         }
         private void onNeckExistHandler()
@@ -334,13 +307,11 @@ namespace ChaitPresClient
                 str ="[系统]" + neckName + "加入了聊天室";
                 Invoke(new delSwitchNameListItem(switchNameListItem), neckName);
             }
-            //Invoke(new delUpdateLobbyChatContent(updateLobbyChatContent), str);
             ExThreadUICtrl.AddTextRow(this, tb_chatHistory, str);
         }
         private void onQuitHandler(String neckName)
         {
             String str = "[系统]"+neckName + "离开了聊天室";
-            //Invoke(new delUpdateLobbyChatContent(updateLobbyChatContent), str);
             ExThreadUICtrl.AddTextRow(this, tb_chatHistory, str);
         }
         private void onNeckListHandler(List<String> neckList)
@@ -350,7 +321,6 @@ namespace ChaitPresClient
         private void onLobbyChatHandler(String neckName, String chatStr)
         {
             String str = neckName + "：" + chatStr;
-            //Invoke(new delUpdateLobbyChatContent(updateLobbyChatContent), str);
             ExThreadUICtrl.AddTextRow(this, tb_chatHistory, str);
         }
         private void onChatHandler(String neckname, String chatStr)
@@ -364,7 +334,6 @@ namespace ChaitPresClient
                // privateChatForms[neckName].BringToFront();    // TODO 用户体验不好，需改善
             }
             
-            // Invoke(new delUpdatePrivateForm(updatePrivateForm),neckname, chatStr);
             privateChatForms[neckname].ShowChatMsg(neckname + "：" + chatStr);
         }
         private void onJoinGroupHandler(String neckname, String groupName)
@@ -381,17 +350,14 @@ namespace ChaitPresClient
             else
             {
                 str = "[系统]" + neckname + "加入了群组: " + groupName;
-                // Invoke(new delSwitchMemberListItem(switchMemberListItem), groupName, neckName);
                 groupChatForms[groupName].SwitchMember(neckname);
             }
 
-            // Invoke(new delUpdateGroupForm(updateGroupForm),groupName, str);
             groupChatForms[groupName].ShowChatMsg(str);
         }
         private void onQuitGroupHandler(String neckName, String groupName)
         {
             String str = "[系统]" + neckName + "离开了群组：" + groupName;
-            //Invoke(new delUpdateLobbyChatContent(updateLobbyChatContent), str);
             ExThreadUICtrl.AddTextRow(this, tb_chatHistory, str);
         }
         private void onGroupListHandler(List<String> groupList)
@@ -401,7 +367,6 @@ namespace ChaitPresClient
         private void onYellHandler(String groupName, String neckName, String yellStr)
         {
             String str = neckName + "：" + yellStr;
-            //Invoke(new delUpdateGroupForm(updateGroupForm), groupName, str);
             groupChatForms[groupName].ShowChatMsg(str);
         }
         private void onFileRequestHandler(String senderNeck, String fileName)
@@ -435,7 +400,7 @@ namespace ChaitPresClient
         }
         private void onChatErrorHandler(String errorStr)
         {
-            Invoke(new delShowError(showError), "聊天系统错误：" + errorStr);
+            ExThreadUICtrl.ShowErrorBox(this, "聊天系统错误");
         }
         private void onFSSendingHandler(String receiverNeck, String fileName, String sourcePath, int bytesSended)
         {
@@ -453,7 +418,7 @@ namespace ChaitPresClient
         }
         private void onFSErrorHandler(String errorStr)
         {
-            Invoke(new delShowError(showError), "文件发送系统错误：" + errorStr);
+            ExThreadUICtrl.ShowErrorBox(this, "文件发送系统错误");
         }
         private void onFRReceivingHandler(String senderNeck, String fileName, String savePath, int bytesReceiveed)
         {
@@ -549,7 +514,7 @@ namespace ChaitPresClient
         }
         private void onFRErrorHandler(String errorStr)
         {
-            Invoke(new delShowError(showError), "文件接收系统错误：" + errorStr);
+            ExThreadUICtrl.ShowErrorBox(this, "文件接收系统错误");
         }
 
         private void LobbyForm_Load(object sender, EventArgs e)
@@ -560,19 +525,26 @@ namespace ChaitPresClient
 
         private void tmr_testVideo_Tick(object sender, EventArgs e)
         {
-            Bitmap bmp = ChaitClient.Instance.GrabImage();
-
-            // +++++++++++++++++++++++++++++++++++++++++++++++
-            // 类库中的GrabImage似乎无法直接抓取图像
-            // 临时 外部窗口获取Bitmap，然后将图像传递进协议类中
-            ChaitClient.Instance.VFrame = bmp;
-            //++++++++++++++++++++++++++++++++++++++++++++++++
-
-            ptb_myFace.Image = bmp;
-
-            foreach(PrivateForm pf in privateChatForms.Values)
+            Bitmap bmp;
+            try
             {
-                pf.ptb_selfVideo.Image = bmp;
+                bmp = ChaitClient.Instance.GrabImage();
+                // +++++++++++++++++++++++++++++++++++++++++++++++
+                // 类库中的GrabImage似乎无法直接抓取图像
+                // 临时 外部窗口获取Bitmap，然后将图像传递进协议类中
+                ChaitClient.Instance.VFrame = new Bitmap(bmp);
+                //++++++++++++++++++++++++++++++++++++++++++++++++
+
+                ptb_myFace.Image = bmp;
+
+                foreach (PrivateForm pf in privateChatForms.Values)
+                {
+                    pf.ptb_selfVideo.Image = bmp;
+                }
+            }
+            catch (System.Exception ex)
+            {
+
             }
         }
 

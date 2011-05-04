@@ -77,6 +77,27 @@ namespace ChaitPresClient
         #endregion
 
         #region 显示对话框
+        private delegate DialogResult delShowMessageBox(String msg, String captain, MessageBoxButtons buttons, MessageBoxIcon icon);
+        private static DialogResult showMessageBox(String msg, String captain, MessageBoxButtons buttons, MessageBoxIcon icon)
+        {
+            return MessageBox.Show(msg, captain, buttons, icon);
+        }
+        public static DialogResult ShowMessageBox(Control holder, String msg, String captain, MessageBoxButtons buttons, MessageBoxIcon icon)
+        {
+           return (DialogResult)holder.Invoke(new delShowMessageBox(showMessageBox), msg, captain, buttons, icon);
+        }
+        #endregion
+
+        #region 显示错误对话框
+        private delegate DialogResult delShowErrorBox(String msg, String captain, MessageBoxButtons buttons, MessageBoxIcon icon);
+        private static DialogResult showErrorBox(String msg, String captain, MessageBoxButtons buttons, MessageBoxIcon icon)
+        {
+            return MessageBox.Show(msg, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        public static DialogResult ShowErrorBox(Control holder, String msg)
+        {
+            return (DialogResult)holder.Invoke(new delShowErrorBox(showErrorBox), msg);
+        }
         #endregion
 
         #region 修改PictureBox的显示图片

@@ -39,19 +39,6 @@ namespace ChaitAppClient.Video
             this.OtherNeck = otherNeck;
         }
 
-        //public VideoMirror(String otherNeck, String otherIP, int otherPort, int thisPort, OnFrameReceivedHandler onFRH)
-        //{
-        //    IsReady = false;
-
-        //    this.OtherNeck = OtherNeck;
-        //    this.otherRecvEP = new IPEndPoint(IPAddress.Parse(otherIP), otherPort);
-        //    this.thisSendEP = new IPEndPoint(ChaitClient.Instance.LocalIP, thisPort);
-        //    this.OnFrameReceivedEvent += onFRH;
-
-        //    thisSendClient = new UdpClient(thisSendEP);
-        //    thisRecvClient = new UdpClient(thisRecvEP);
-        //}
-
         // 开始
         public void Begin()
         {

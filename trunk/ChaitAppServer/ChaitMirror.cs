@@ -82,7 +82,7 @@ namespace ChaitAppServer
                 appMsgHandler(bytesRead);
             }
 
-            if (client.Connected == true)
+            if (client != null && client.Connected == true)
             {
                 client.GetStream().BeginRead(data, 0,
                     System.Convert.ToInt32(client.ReceiveBufferSize),
@@ -103,7 +103,7 @@ namespace ChaitAppServer
         }
         internal void transDisconnect()
         {
-            if(client.Connected)
+            if(client != null && client.Connected)
                 client.Close();
         }
         #endregion
@@ -220,6 +220,7 @@ namespace ChaitAppServer
             if (OnServerLog != null)
                 OnServerLog("\n<< Quit数据处理 >>");
             client.Close();
+            client = null;
             ChaitServer.Instance.RemoveClient(ClientNeck);
             if (OnServerLog != null)
                 OnServerLog("[管理]已移除客户端：" + ClientNeck);
