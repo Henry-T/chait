@@ -60,19 +60,6 @@ namespace ChaitPresClient
         public void OnFrameReceivedHandler(Bitmap frame)
         {
             ExThreadUICtrl.SetPictureBoxImage(this, ptb_otherVideo, frame);
-            // Invoke(new DelUpdateOtherFrame(delUpdateOtherFrame), frame);
         }
-        //public delegate void DelUpdateOtherFrame(Bitmap frame);
-        //public void delUpdateOtherFrame(Bitmap frame)
-        //{
-        //    try
-        //    {
-        //        .Image = frame;
-        //    }
-        //    catch
-        //    {
-        //        // 对象已被使用... 异常
-        //    }
-        //}
     }
 }

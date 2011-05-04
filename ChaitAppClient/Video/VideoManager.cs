@@ -31,14 +31,10 @@ namespace ChaitAppClient.Video
         // 初始化捕获设备
         public void InitCapture(IntPtr handle, int width, int height)
         {
-            capTimer = new System.Timers.Timer(1000);
+            capTimer = new System.Timers.Timer(50);
             capTimer.Elapsed += new ElapsedEventHandler(capTimer_Elapsed);
             capTimer.Start();
             capMgr = new AvicapManager(handle, width, height);
-
-            // 测试用 - 本机多实例
-            //Random r = new Random((int)DateTime.Now.Ticks);
-            //usePort = r.Next(3000, 8000);
         }
 
         // ==============================================
@@ -120,36 +116,10 @@ namespace ChaitAppClient.Video
             newTarget.thisRecvEP = new IPEndPoint(ChaitClient.Instance.LocalIP, thisRecvPort);
             newTarget.otherSendEP = new IPEndPoint(otherIP, otherSendPort);
             newTarget.otherRecvEP = new IPEndPoint(otherIP, otherRecvPort);
+            newTarget.OnFrameReceivedEvent += srcEP;
 
             videoList.Add(newTarget);
         }
-
-        //// 开始发送和接收 - 在必要参数都设定完毕的情况下才能够调用
-        //// 1. 主动方接收到视频许可 
-        //public void Begin(String otherNeck, String otherIP, int otherPort, VideoMirror.OnFrameReceivedHandler onFRH)
-        //{
-        //    foreach (VideoMirror vm in videoList)
-        //    {
-        //        if (vm.OtherNeck == otherNeck)
-        //        {
-        //            vm.OtherEP = new IPEndPoint(IPAddress.Parse(otherIP), otherPort);
-        //            vm.OnFrameReceivedEvent += onFRH;
-        //            vm.Begin();
-        //        }
-        //    }
-        //}
-        //// 2.被动方接收视频请求时
-        //public void Begin(String otherNeck, VideoMirror.OnFrameReceivedHandler onFRH)
-        //{
-        //    foreach (VideoMirror vm in videoList)
-        //    {
-        //        if (vm.OtherNeck == otherNeck)
-        //        {
-        //            vm.OnFrameReceivedEvent += onFRH;
-        //            vm.Begin();
-        //        }
-        //    }
-        //} 
         #endregion
 
         // 在视频请求被拒绝时清理视频模块

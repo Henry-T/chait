@@ -43,7 +43,6 @@ namespace ChaitAppClient.Video
         #endregion
 
         public AvicapManager(IntPtr handle, int width, int height)
-        //public void InitialAviCap(IntPtr handle, int width, int height)
         {
             mControlPtr = handle;
             mWidth = width;
@@ -98,12 +97,5 @@ namespace ChaitAppClient.Video
             IntPtr hBmp = Marshal.StringToHGlobalAnsi(path);
             SendMessage(hWndC, WM_CAP_SAVEDIB, 0, hBmp.ToInt32());
         }
-
-        //public void Test()
-        //{
-        //    IntPtr hBmp = Marshal.StringToHGlobalAnsi("13.bmp");
-        //    SendMessage(hWndC, WM_CAP_SAVEDIB, 0, hBmp.ToInt32());
-        //}
-
     }
 }
