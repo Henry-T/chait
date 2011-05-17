@@ -64,16 +64,9 @@ namespace ChaitPresServer
                 startBtn.Text = "停止";
 
                 // TODO 临时设定:创建默认组
-                ChaitServer.Instance.Groups.Add("灵异八卦团", new List<string>());
-                ChaitServer.Instance.Groups.Add("豆瓣党支部", new List<string>());
-                ChaitServer.Instance.Groups.Add("偷菜群英会", new List<string>());
-                ChaitServer.Instance.Groups.Add("毛毛一族", new List<string>());
-                ChaitServer.Instance.Groups.Add("网络多媒体讨论", new List<string>());
-                ChaitServer.Instance.Groups.Add("界面美化讨论", new List<string>()); // 保存文件
-                ChaitServer.Instance.Groups.Add("软件功能讨论", new List<string>());
-                ChaitServer.Instance.Groups.Add("妆吧的假面舞会", new List<string>());
-                ChaitServer.Instance.Groups.Add("你看啥电影", new List<string>());
-                ChaitServer.Instance.Groups.Add("这会儿脑残的进..呵呵", new List<string>());
+                ChaitServer.Instance.Groups.Add("第四季度", new List<string>());
+                ChaitServer.Instance.Groups.Add("领域2", new List<string>());
+                ChaitServer.Instance.Groups.Add("四方城", new List<string>());
 
             }
             else if (startBtn.Text == "停止")

@@ -18,6 +18,7 @@ namespace ChaitPresClient
     {
         Dictionary<String, PrivateForm> privateChatForms = new Dictionary<string, PrivateForm>();
         Dictionary<String, GroupForm> groupChatForms = new Dictionary<string, GroupForm>();
+        MainForm gameForm;
 
         public LobbyForm()
         {
@@ -107,7 +108,7 @@ namespace ChaitPresClient
                     return;
                 }
                 // 获取在线好友列表
-                ChaitClient.Instance.NeckList(); // TODO 问题：无法同时获取两个列表，后一条请求信息丢失
+                //ChaitClient.Instance.NeckList(); // TODO 问题：无法同时获取两个列表，后一条请求信息丢失
                 // 获取群组列表
                 ChaitClient.Instance.GroupList();
 
@@ -551,6 +552,12 @@ namespace ChaitPresClient
         private void btn_changePortBase_Click(object sender, EventArgs e)
         {
             ChaitClient.Instance.ChangePortBase(int.Parse(tb_portBase.Text));
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            gameForm = new MainForm(this);
+            gameForm.Show();
         }
     }
 }
