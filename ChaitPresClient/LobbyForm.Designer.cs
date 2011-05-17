@@ -70,6 +70,11 @@
             this.label11 = new System.Windows.Forms.Label();
             this.tb_portBase = new System.Windows.Forms.TextBox();
             this.btn_changePortBase = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -82,7 +87,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 44);
+            this.label1.Location = new System.Drawing.Point(771, 137);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 12);
             this.label1.TabIndex = 0;
@@ -90,7 +95,7 @@
             // 
             // tb_neckName
             // 
-            this.tb_neckName.Location = new System.Drawing.Point(54, 40);
+            this.tb_neckName.Location = new System.Drawing.Point(803, 134);
             this.tb_neckName.Name = "tb_neckName";
             this.tb_neckName.Size = new System.Drawing.Size(108, 21);
             this.tb_neckName.TabIndex = 1;
@@ -98,9 +103,9 @@
             // 
             // btn_connect
             // 
-            this.btn_connect.Location = new System.Drawing.Point(276, 53);
+            this.btn_connect.Location = new System.Drawing.Point(925, 132);
             this.btn_connect.Name = "btn_connect";
-            this.btn_connect.Size = new System.Drawing.Size(160, 23);
+            this.btn_connect.Size = new System.Drawing.Size(75, 23);
             this.btn_connect.TabIndex = 2;
             this.btn_connect.Text = "连接";
             this.btn_connect.UseVisualStyleBackColor = true;
@@ -173,16 +178,16 @@
             // 
             // sts_fileReceive
             // 
-            this.sts_fileReceive.Location = new System.Drawing.Point(0, 473);
+            this.sts_fileReceive.Location = new System.Drawing.Point(0, 588);
             this.sts_fileReceive.Name = "sts_fileReceive";
-            this.sts_fileReceive.Size = new System.Drawing.Size(705, 22);
+            this.sts_fileReceive.Size = new System.Drawing.Size(1008, 22);
             this.sts_fileReceive.TabIndex = 5;
             this.sts_fileReceive.Text = "sts_receive";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(178, 16);
+            this.label5.Location = new System.Drawing.Point(174, 16);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 12);
             this.label5.TabIndex = 0;
@@ -190,7 +195,7 @@
             // 
             // tb_serverPort
             // 
-            this.tb_serverPort.Location = new System.Drawing.Point(210, 12);
+            this.tb_serverPort.Location = new System.Drawing.Point(203, 12);
             this.tb_serverPort.Name = "tb_serverPort";
             this.tb_serverPort.Size = new System.Drawing.Size(38, 21);
             this.tb_serverPort.TabIndex = 1;
@@ -211,11 +216,9 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.tb_serverPort);
-            this.groupBox1.Controls.Add(this.tb_neckName);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(11, 10);
+            this.groupBox1.Location = new System.Drawing.Point(751, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(257, 66);
+            this.groupBox1.Size = new System.Drawing.Size(245, 44);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "聊天服务器";
@@ -233,9 +236,9 @@
             this.groupBox2.Controls.Add(this.cbb_localIP);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Enabled = false;
-            this.groupBox2.Location = new System.Drawing.Point(274, 10);
+            this.groupBox2.Location = new System.Drawing.Point(751, 82);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(166, 39);
+            this.groupBox2.Size = new System.Drawing.Size(245, 39);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "文件传递";
@@ -243,7 +246,7 @@
             // cbb_localIP
             // 
             this.cbb_localIP.FormattingEnabled = true;
-            this.cbb_localIP.Location = new System.Drawing.Point(50, 13);
+            this.cbb_localIP.Location = new System.Drawing.Point(51, 13);
             this.cbb_localIP.Name = "cbb_localIP";
             this.cbb_localIP.Size = new System.Drawing.Size(108, 20);
             this.cbb_localIP.TabIndex = 3;
@@ -281,16 +284,16 @@
             // 
             // sts_fileSend
             // 
-            this.sts_fileSend.Location = new System.Drawing.Point(0, 451);
+            this.sts_fileSend.Location = new System.Drawing.Point(0, 566);
             this.sts_fileSend.Name = "sts_fileSend";
-            this.sts_fileSend.Size = new System.Drawing.Size(705, 22);
+            this.sts_fileSend.Size = new System.Drawing.Size(1008, 22);
             this.sts_fileSend.TabIndex = 7;
             this.sts_fileSend.Text = "sts_send";
             // 
             // btn_receiveStop
             // 
             this.btn_receiveStop.Enabled = false;
-            this.btn_receiveStop.Location = new System.Drawing.Point(346, 19);
+            this.btn_receiveStop.Location = new System.Drawing.Point(131, 45);
             this.btn_receiveStop.Name = "btn_receiveStop";
             this.btn_receiveStop.Size = new System.Drawing.Size(37, 23);
             this.btn_receiveStop.TabIndex = 2;
@@ -301,7 +304,7 @@
             // btn_receivePause
             // 
             this.btn_receivePause.Enabled = false;
-            this.btn_receivePause.Location = new System.Drawing.Point(303, 19);
+            this.btn_receivePause.Location = new System.Drawing.Point(88, 45);
             this.btn_receivePause.Name = "btn_receivePause";
             this.btn_receivePause.Size = new System.Drawing.Size(37, 23);
             this.btn_receivePause.TabIndex = 2;
@@ -321,7 +324,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(244, 24);
+            this.label8.Location = new System.Drawing.Point(29, 50);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 12);
             this.label8.TabIndex = 8;
@@ -340,9 +343,9 @@
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.tb_send);
             this.groupBox3.Controls.Add(this.btn_sendMsg);
-            this.groupBox3.Location = new System.Drawing.Point(11, 82);
+            this.groupBox3.Location = new System.Drawing.Point(110, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(581, 306);
+            this.groupBox3.Size = new System.Drawing.Size(645, 456);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "聊天";
@@ -402,9 +405,9 @@
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.btn_receiveStop);
             this.groupBox4.Controls.Add(this.btn_receivePause);
-            this.groupBox4.Location = new System.Drawing.Point(11, 395);
+            this.groupBox4.Location = new System.Drawing.Point(751, 285);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(581, 53);
+            this.groupBox4.Size = new System.Drawing.Size(245, 72);
             this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "文件传递";
@@ -412,24 +415,24 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(442, 5);
+            this.pictureBox1.Location = new System.Drawing.Point(777, 510);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(46, 44);
+            this.pictureBox1.Size = new System.Drawing.Size(58, 53);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             // 
             // ptb_capHolder
             // 
-            this.ptb_capHolder.Location = new System.Drawing.Point(442, 53);
+            this.ptb_capHolder.Location = new System.Drawing.Point(761, 200);
             this.ptb_capHolder.Name = "ptb_capHolder";
-            this.ptb_capHolder.Size = new System.Drawing.Size(46, 32);
+            this.ptb_capHolder.Size = new System.Drawing.Size(91, 79);
             this.ptb_capHolder.TabIndex = 12;
             this.ptb_capHolder.TabStop = false;
             // 
             // ptb_myFace
             // 
-            this.ptb_myFace.Location = new System.Drawing.Point(495, 6);
+            this.ptb_myFace.Location = new System.Drawing.Point(881, 200);
             this.ptb_myFace.Name = "ptb_myFace";
             this.ptb_myFace.Size = new System.Drawing.Size(91, 79);
             this.ptb_myFace.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -445,7 +448,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(605, 10);
+            this.label11.Location = new System.Drawing.Point(759, 61);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(77, 12);
             this.label11.TabIndex = 14;
@@ -453,15 +456,15 @@
             // 
             // tb_portBase
             // 
-            this.tb_portBase.Location = new System.Drawing.Point(595, 27);
+            this.tb_portBase.Location = new System.Drawing.Point(840, 56);
             this.tb_portBase.Name = "tb_portBase";
-            this.tb_portBase.Size = new System.Drawing.Size(100, 21);
+            this.tb_portBase.Size = new System.Drawing.Size(71, 21);
             this.tb_portBase.TabIndex = 15;
             this.tb_portBase.Text = "4000";
             // 
             // btn_changePortBase
             // 
-            this.btn_changePortBase.Location = new System.Drawing.Point(607, 52);
+            this.btn_changePortBase.Location = new System.Drawing.Point(926, 56);
             this.btn_changePortBase.Name = "btn_changePortBase";
             this.btn_changePortBase.Size = new System.Drawing.Size(75, 23);
             this.btn_changePortBase.TabIndex = 16;
@@ -469,27 +472,79 @@
             this.btn_changePortBase.UseVisualStyleBackColor = true;
             this.btn_changePortBase.Click += new System.EventHandler(this.btn_changePortBase_Click);
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(759, 177);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 12);
+            this.label12.TabIndex = 17;
+            this.label12.Text = "视频测试";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(843, 516);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(83, 12);
+            this.label13.TabIndex = 18;
+            this.label13.Text = "Chait游戏平台";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(872, 543);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(59, 12);
+            this.label14.TabIndex = 18;
+            this.label14.Text = "by Tankid";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Location = new System.Drawing.Point(3, 5);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(548, 207);
+            this.groupBox5.TabIndex = 19;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "热门游戏";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Location = new System.Drawing.Point(3, 225);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(548, 338);
+            this.groupBox6.TabIndex = 19;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "最新游戏";
+            // 
             // LobbyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(705, 495);
+            this.ClientSize = new System.Drawing.Size(1008, 610);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.btn_changePortBase);
             this.Controls.Add(this.tb_portBase);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.ptb_myFace);
+            this.Controls.Add(this.tb_neckName);
             this.Controls.Add(this.ptb_capHolder);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.sts_fileSend);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.sts_fileReceive);
             this.Controls.Add(this.btn_connect);
+            this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.groupBox6);
             this.Name = "LobbyForm";
-            this.Text = "聊天大厅";
+            this.Text = "ChaitPlatform - 聊天大厅";
             this.Load += new System.EventHandler(this.LobbyForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -549,6 +604,11 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox tb_portBase;
         private System.Windows.Forms.Button btn_changePortBase;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBox6;
     }
 }
 
