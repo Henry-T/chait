@@ -33,12 +33,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tb_neckName = new System.Windows.Forms.TextBox();
             this.btn_connect = new System.Windows.Forms.Button();
-            this.tb_chatHistory = new System.Windows.Forms.TextBox();
-            this.lsb_friends = new System.Windows.Forms.ListBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tb_send = new System.Windows.Forms.TextBox();
-            this.btn_sendMsg = new System.Windows.Forms.Button();
             this.btn_sendFile = new System.Windows.Forms.Button();
             this.sts_fileReceive = new System.Windows.Forms.StatusStrip();
             this.label5 = new System.Windows.Forms.Label();
@@ -56,16 +50,7 @@
             this.btn_receivePause = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.tb_groupName = new System.Windows.Forms.TextBox();
-            this.btn_joinGroup = new System.Windows.Forms.Button();
-            this.lsb_groups = new System.Windows.Forms.ListBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.ptb_capHolder = new System.Windows.Forms.PictureBox();
-            this.ptb_myFace = new System.Windows.Forms.PictureBox();
             this.tmr_testVideo = new System.Windows.Forms.Timer(this.components);
             this.label11 = new System.Windows.Forms.Label();
             this.tb_portBase = new System.Windows.Forms.TextBox();
@@ -75,13 +60,34 @@
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.lsb_friends = new System.Windows.Forms.ListBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tb_groupName = new System.Windows.Forms.TextBox();
+            this.btn_joinGroup = new System.Windows.Forms.Button();
+            this.lsb_groups = new System.Windows.Forms.ListBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tb_chatHistory = new System.Windows.Forms.TextBox();
+            this.tb_send = new System.Windows.Forms.TextBox();
+            this.btn_sendMsg = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.ptb_myFace = new System.Windows.Forms.PictureBox();
+            this.ptb_capHolder = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_capHolder)).BeginInit();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_myFace)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_capHolder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -110,60 +116,6 @@
             this.btn_connect.Text = "连接";
             this.btn_connect.UseVisualStyleBackColor = true;
             this.btn_connect.Click += new System.EventHandler(this.btn_connect_Click);
-            // 
-            // tb_chatHistory
-            // 
-            this.tb_chatHistory.Location = new System.Drawing.Point(6, 30);
-            this.tb_chatHistory.Multiline = true;
-            this.tb_chatHistory.Name = "tb_chatHistory";
-            this.tb_chatHistory.Size = new System.Drawing.Size(297, 241);
-            this.tb_chatHistory.TabIndex = 3;
-            // 
-            // lsb_friends
-            // 
-            this.lsb_friends.FormattingEnabled = true;
-            this.lsb_friends.ItemHeight = 12;
-            this.lsb_friends.Location = new System.Drawing.Point(309, 30);
-            this.lsb_friends.Name = "lsb_friends";
-            this.lsb_friends.Size = new System.Drawing.Size(132, 268);
-            this.lsb_friends.TabIndex = 4;
-            this.lsb_friends.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lsb_friends_MouseDoubleClick);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(311, 15);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(95, 12);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "朋友 [双击私聊]";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(4, 14);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 12);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "大厅聊天";
-            // 
-            // tb_send
-            // 
-            this.tb_send.Location = new System.Drawing.Point(6, 279);
-            this.tb_send.Name = "tb_send";
-            this.tb_send.Size = new System.Drawing.Size(215, 21);
-            this.tb_send.TabIndex = 1;
-            // 
-            // btn_sendMsg
-            // 
-            this.btn_sendMsg.Enabled = false;
-            this.btn_sendMsg.Location = new System.Drawing.Point(227, 277);
-            this.btn_sendMsg.Name = "btn_sendMsg";
-            this.btn_sendMsg.Size = new System.Drawing.Size(75, 23);
-            this.btn_sendMsg.TabIndex = 2;
-            this.btn_sendMsg.Text = "大厅消息";
-            this.btn_sendMsg.UseVisualStyleBackColor = true;
-            this.btn_sendMsg.Click += new System.EventHandler(this.btn_sendMsg_Click);
             // 
             // btn_sendFile
             // 
@@ -330,72 +282,6 @@
             this.label8.TabIndex = 8;
             this.label8.Text = "文件接收";
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.tb_groupName);
-            this.groupBox3.Controls.Add(this.btn_joinGroup);
-            this.groupBox3.Controls.Add(this.tb_chatHistory);
-            this.groupBox3.Controls.Add(this.lsb_groups);
-            this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.lsb_friends);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.tb_send);
-            this.groupBox3.Controls.Add(this.btn_sendMsg);
-            this.groupBox3.Location = new System.Drawing.Point(110, 3);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(645, 456);
-            this.groupBox3.TabIndex = 9;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "聊天";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(448, 34);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(29, 12);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "名称";
-            // 
-            // tb_groupName
-            // 
-            this.tb_groupName.Location = new System.Drawing.Point(484, 29);
-            this.tb_groupName.Name = "tb_groupName";
-            this.tb_groupName.Size = new System.Drawing.Size(90, 21);
-            this.tb_groupName.TabIndex = 6;
-            // 
-            // btn_joinGroup
-            // 
-            this.btn_joinGroup.Enabled = false;
-            this.btn_joinGroup.Location = new System.Drawing.Point(447, 52);
-            this.btn_joinGroup.Name = "btn_joinGroup";
-            this.btn_joinGroup.Size = new System.Drawing.Size(128, 23);
-            this.btn_joinGroup.TabIndex = 5;
-            this.btn_joinGroup.Text = "创建/加入";
-            this.btn_joinGroup.UseVisualStyleBackColor = true;
-            this.btn_joinGroup.Click += new System.EventHandler(this.btn_joinGroup_Click);
-            // 
-            // lsb_groups
-            // 
-            this.lsb_groups.FormattingEnabled = true;
-            this.lsb_groups.ItemHeight = 12;
-            this.lsb_groups.Location = new System.Drawing.Point(447, 77);
-            this.lsb_groups.Name = "lsb_groups";
-            this.lsb_groups.Size = new System.Drawing.Size(129, 220);
-            this.lsb_groups.TabIndex = 4;
-            this.lsb_groups.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lsb_groups_MouseDoubleClick);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(449, 15);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(95, 12);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "群组 [双击加入]";
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.btn_sendFile);
@@ -411,33 +297,6 @@
             this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "文件传递";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(777, 510);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(58, 53);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 11;
-            this.pictureBox1.TabStop = false;
-            // 
-            // ptb_capHolder
-            // 
-            this.ptb_capHolder.Location = new System.Drawing.Point(761, 200);
-            this.ptb_capHolder.Name = "ptb_capHolder";
-            this.ptb_capHolder.Size = new System.Drawing.Size(91, 79);
-            this.ptb_capHolder.TabIndex = 12;
-            this.ptb_capHolder.TabStop = false;
-            // 
-            // ptb_myFace
-            // 
-            this.ptb_myFace.Location = new System.Drawing.Point(881, 200);
-            this.ptb_myFace.Name = "ptb_myFace";
-            this.ptb_myFace.Size = new System.Drawing.Size(91, 79);
-            this.ptb_myFace.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ptb_myFace.TabIndex = 13;
-            this.ptb_myFace.TabStop = false;
             // 
             // tmr_testVideo
             // 
@@ -501,21 +360,220 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.button3);
+            this.groupBox5.Controls.Add(this.button2);
+            this.groupBox5.Controls.Add(this.button1);
             this.groupBox5.Location = new System.Drawing.Point(3, 5);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(548, 207);
+            this.groupBox5.Size = new System.Drawing.Size(599, 257);
             this.groupBox5.TabIndex = 19;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "热门游戏";
             // 
             // groupBox6
             // 
-            this.groupBox6.Location = new System.Drawing.Point(3, 225);
+            this.groupBox6.Controls.Add(this.button4);
+            this.groupBox6.Controls.Add(this.button5);
+            this.groupBox6.Controls.Add(this.button6);
+            this.groupBox6.Location = new System.Drawing.Point(3, 268);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(548, 338);
+            this.groupBox6.Size = new System.Drawing.Size(599, 295);
             this.groupBox6.TabIndex = 19;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "最新游戏";
+            // 
+            // lsb_friends
+            // 
+            this.lsb_friends.FormattingEnabled = true;
+            this.lsb_friends.ItemHeight = 12;
+            this.lsb_friends.Location = new System.Drawing.Point(610, 284);
+            this.lsb_friends.Name = "lsb_friends";
+            this.lsb_friends.Size = new System.Drawing.Size(132, 280);
+            this.lsb_friends.TabIndex = 21;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(608, 270);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(119, 12);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "在线玩家 [双击私聊]";
+            // 
+            // tb_groupName
+            // 
+            this.tb_groupName.Location = new System.Drawing.Point(882, 362);
+            this.tb_groupName.Name = "tb_groupName";
+            this.tb_groupName.Size = new System.Drawing.Size(90, 21);
+            this.tb_groupName.TabIndex = 25;
+            // 
+            // btn_joinGroup
+            // 
+            this.btn_joinGroup.Enabled = false;
+            this.btn_joinGroup.Location = new System.Drawing.Point(834, 363);
+            this.btn_joinGroup.Name = "btn_joinGroup";
+            this.btn_joinGroup.Size = new System.Drawing.Size(128, 23);
+            this.btn_joinGroup.TabIndex = 24;
+            this.btn_joinGroup.Text = "创建/加入";
+            this.btn_joinGroup.UseVisualStyleBackColor = true;
+            // 
+            // lsb_groups
+            // 
+            this.lsb_groups.FormattingEnabled = true;
+            this.lsb_groups.ItemHeight = 12;
+            this.lsb_groups.Location = new System.Drawing.Point(610, 20);
+            this.lsb_groups.Name = "lsb_groups";
+            this.lsb_groups.Size = new System.Drawing.Size(129, 244);
+            this.lsb_groups.TabIndex = 23;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(608, 5);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(119, 12);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "游戏列表 [双击开始]";
+            // 
+            // tb_chatHistory
+            // 
+            this.tb_chatHistory.Location = new System.Drawing.Point(751, 387);
+            this.tb_chatHistory.Multiline = true;
+            this.tb_chatHistory.Name = "tb_chatHistory";
+            this.tb_chatHistory.Size = new System.Drawing.Size(239, 85);
+            this.tb_chatHistory.TabIndex = 28;
+            // 
+            // tb_send
+            // 
+            this.tb_send.Location = new System.Drawing.Point(751, 478);
+            this.tb_send.Name = "tb_send";
+            this.tb_send.Size = new System.Drawing.Size(155, 21);
+            this.tb_send.TabIndex = 26;
+            // 
+            // btn_sendMsg
+            // 
+            this.btn_sendMsg.Enabled = false;
+            this.btn_sendMsg.Location = new System.Drawing.Point(913, 478);
+            this.btn_sendMsg.Name = "btn_sendMsg";
+            this.btn_sendMsg.Size = new System.Drawing.Size(75, 23);
+            this.btn_sendMsg.TabIndex = 27;
+            this.btn_sendMsg.Text = "大厅消息";
+            this.btn_sendMsg.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(749, 372);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 12);
+            this.label4.TabIndex = 29;
+            this.label4.Text = "大厅聊天";
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "Game1.jpg");
+            this.imageList1.Images.SetKeyName(1, "Game2.jpg");
+            this.imageList1.Images.SetKeyName(2, "Game3.jpg");
+            // 
+            // ptb_myFace
+            // 
+            this.ptb_myFace.Location = new System.Drawing.Point(881, 200);
+            this.ptb_myFace.Name = "ptb_myFace";
+            this.ptb_myFace.Size = new System.Drawing.Size(91, 79);
+            this.ptb_myFace.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptb_myFace.TabIndex = 13;
+            this.ptb_myFace.TabStop = false;
+            // 
+            // ptb_capHolder
+            // 
+            this.ptb_capHolder.Location = new System.Drawing.Point(761, 200);
+            this.ptb_capHolder.Name = "ptb_capHolder";
+            this.ptb_capHolder.Size = new System.Drawing.Size(91, 79);
+            this.ptb_capHolder.TabIndex = 12;
+            this.ptb_capHolder.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(777, 510);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(58, 53);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
+            // 
+            // button3
+            // 
+            this.button3.BackgroundImage = global::ChaitPresClient.Properties.Resources.Game1;
+            this.button3.Font = new System.Drawing.Font("黑体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button3.Image = global::ChaitPresClient.Properties.Resources.Game3;
+            this.button3.Location = new System.Drawing.Point(6, 172);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(587, 79);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "四方城";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.BackgroundImage = global::ChaitPresClient.Properties.Resources.Game1;
+            this.button2.Font = new System.Drawing.Font("黑体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button2.Image = global::ChaitPresClient.Properties.Resources.Game2;
+            this.button2.Location = new System.Drawing.Point(6, 94);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(586, 79);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "领域2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::ChaitPresClient.Properties.Resources.Game1;
+            this.button1.Font = new System.Drawing.Font("黑体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.Location = new System.Drawing.Point(6, 16);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(586, 79);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "第四季度";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button4
+            // 
+            this.button4.BackgroundImage = global::ChaitPresClient.Properties.Resources.Game1;
+            this.button4.Font = new System.Drawing.Font("黑体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button4.Image = global::ChaitPresClient.Properties.Resources.Game3;
+            this.button4.Location = new System.Drawing.Point(6, 172);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(587, 79);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "四方城";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.BackgroundImage = global::ChaitPresClient.Properties.Resources.Game1;
+            this.button5.Font = new System.Drawing.Font("黑体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button5.Image = global::ChaitPresClient.Properties.Resources.Game2;
+            this.button5.Location = new System.Drawing.Point(6, 94);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(586, 79);
+            this.button5.TabIndex = 4;
+            this.button5.Text = "领域2";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.BackgroundImage = global::ChaitPresClient.Properties.Resources.Game1;
+            this.button6.Font = new System.Drawing.Font("黑体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button6.Location = new System.Drawing.Point(6, 16);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(586, 79);
+            this.button6.TabIndex = 3;
+            this.button6.Text = "第四季度";
+            this.button6.UseVisualStyleBackColor = true;
             // 
             // LobbyForm
             // 
@@ -523,7 +581,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1008, 610);
-            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.lsb_friends);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.tb_chatHistory);
+            this.Controls.Add(this.tb_send);
+            this.Controls.Add(this.btn_sendMsg);
+            this.Controls.Add(this.tb_groupName);
+            this.Controls.Add(this.btn_joinGroup);
+            this.Controls.Add(this.lsb_groups);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
@@ -550,13 +617,13 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_capHolder)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ptb_myFace)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_capHolder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -567,12 +634,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tb_neckName;
         private System.Windows.Forms.Button btn_connect;
-        private System.Windows.Forms.TextBox tb_chatHistory;
-        private System.Windows.Forms.ListBox lsb_friends;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox tb_send;
-        private System.Windows.Forms.Button btn_sendMsg;
         private System.Windows.Forms.Button btn_sendFile;
         private System.Windows.Forms.StatusStrip sts_fileReceive;
         private System.Windows.Forms.Label label5;
@@ -588,14 +649,8 @@
         private System.Windows.Forms.Button btn_receivePause;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.ListBox lsb_groups;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox tb_groupName;
-        private System.Windows.Forms.Button btn_joinGroup;
         private System.Windows.Forms.ComboBox cbb_serverIP;
         private System.Windows.Forms.PictureBox ptb_capHolder;
         private System.Windows.Forms.PictureBox ptb_myFace;
@@ -609,6 +664,23 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.ListBox lsb_friends;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox tb_groupName;
+        private System.Windows.Forms.Button btn_joinGroup;
+        private System.Windows.Forms.ListBox lsb_groups;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox tb_chatHistory;
+        private System.Windows.Forms.TextBox tb_send;
+        private System.Windows.Forms.Button btn_sendMsg;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
     }
 }
 
